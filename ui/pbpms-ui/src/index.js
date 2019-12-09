@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+//Uikit import
+import 'uikit/dist/css/uikit.min.css';
+import UIkit from 'uikit/dist/js/uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+//IE compitability
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 
+UIkit.use(Icons)
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
