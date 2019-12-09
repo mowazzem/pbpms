@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="uk-margin">
               <div className="uk-inline">
-                <a className="uk-form-icon" href="#" uk-icon="icon: user"></a>
+                <a className="uk-form-icon uk-disabled" tabIndex="-1" href="#" uk-icon="icon: user"></a>
                 <input
                   name="username"
                   className="uk-input"
@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
             </div>
             <div className="uk-margin">
               <div className="uk-inline">
-                <a className="uk-form-icon" href="#" uk-icon="icon: lock"></a>
+                <a className="uk-form-icon uk-disabled" tabIndex="-2" href="#" uk-icon="icon: lock"></a>
                 <input
                   name="password"
                   className="uk-input"
