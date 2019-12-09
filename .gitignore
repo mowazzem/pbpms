@@ -1,22 +1,22 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+ui/pbpms-ui/node_modules
+ui/pbpms-ui/.pnp
+ui/pbpms-ui.pnp.js
 
 # testing
-/coverage
+ui/pbpms-ui/coverage
 
 # production
-/build
+ui/pbpms-ui/build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+ui/pbpms-ui.DS_Store
+ui/pbpms-ui.env.local
+ui/pbpms-ui.env.development.local
+ui/pbpms-ui.env.test.local
+ui/pbpms-ui.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
