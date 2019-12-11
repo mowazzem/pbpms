@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -10,7 +11,13 @@ class LoginForm extends React.Component {
   }
   handleSubmit =(e) => {
     e.preventDefault();
-    alert(this.state.username+" "+this.state.password);
+    axios.get("http://localhost:8881/api/login")
+    .then(res=>{
+      console.log(res.data);
+    })
+    .catch(error=>{
+      console.log(error);
+    });
   }
 
   handleChange=(e)=>{

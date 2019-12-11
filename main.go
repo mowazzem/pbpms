@@ -7,6 +7,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/gorilla/handlers"
+
+	"pbpms/login/handler"
+
 	"github.com/gorilla/mux"
 )
 
@@ -17,8 +21,14 @@ func main() {
 	r.HandleFunc("/manifest.json", manifestHandler)
 	r.HandleFunc("/logo192.png", logoHandler)
 
+	handler.NewLoginHandler(r.PathPrefix("/api/").Subrouter(), nil)
+
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	originsOk := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
+
 	srv := http.Server{
-		Handler:      r,
+		Handler:      handlers.CORS(headersOk, originsOk, methodsOk)(r),
 		Addr:         ":8881",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
