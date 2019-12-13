@@ -1,21 +1,37 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import LoginForm from "./components/LoginForm"
+import LoginForm from "./components/LoginForm.js";
+
+import { connect } from "react-redux";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends React.Component {
-  state={
-
-  }
   render() {
     return (
-      <div className="App">
-        <div className="uk-container">
-        <LoginForm className="" />
+      
+        <div className="App">
+          <BrowserRouter>
+          <div className="uk-container">
+            <Route path="/login" Component={LoginForm} />
+            <div>
+            <p style={{ color: "white" }}>
+              {this.props.cred.username}
+              <br />
+              {this.props.cred.password}
+            </p>
+          </div>
+          </div>
+          
+          </BrowserRouter>
         </div>
-      </div>
+      
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  cred: state.login.credentials
+});
+
+export default connect(mapStateToProps)(App);

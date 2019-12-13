@@ -1,23 +1,23 @@
 import React from "react";
-import axios from "axios"
+import axios from "axios";
+import {connect} from 'react-redux';
+import {submitCredentials} from '../actions/loginActions'
 
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+ constructor(props){
+   super(props);
+   this.state={
+     username:'',
+     password:''
+   }
+ }
   handleSubmit =(e) => {
     e.preventDefault();
-    axios.get("http://localhost:8881/api/login")
-    .then(res=>{
-      console.log(res.data);
-    })
-    .catch(error=>{
-      console.log(error);
-    });
+    const cred={
+      username:this.state.username,
+      password:this.state.password
+    };
+    this.props.submitCredentials(cred);
   }
 
   handleChange=(e)=>{
@@ -75,4 +75,8 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps=(state)=>({
+  
+});
+
+export default connect(mapStateToProps,{submitCredentials})(LoginForm);
