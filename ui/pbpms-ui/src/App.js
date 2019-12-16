@@ -4,34 +4,22 @@ import "./App.css";
 import LoginForm from "./components/LoginForm.js";
 
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
   render() {
     return (
-      
-        <div className="App">
-          <BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
           <div className="uk-container">
-            <Route path="/login" Component={LoginForm} />
-            <div>
-            <p style={{ color: "white" }}>
-              {this.props.cred.username}
-              <br />
-              {this.props.cred.password}
-            </p>
+            <Route path="/">
+              <LoginForm />
+            </Route>
           </div>
-          </div>
-          
-          </BrowserRouter>
-        </div>
-      
+        </BrowserRouter>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  cred: state.login.credentials
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
